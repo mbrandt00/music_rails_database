@@ -10,19 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_031446) do
+ActiveRecord::Schema.define(version: 2022_02_01_213759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "composers", force: :cascade do |t|
+    t.string "name"
+    t.integer "birth_year"
+    t.integer "death_year"
+    t.string "musical_era"
+    t.integer "num_compositions"
+    t.boolean "dead"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pieces", force: :cascade do |t|
     t.integer "opus"
+    t.integer "number"
     t.string "type_of_piece"
-    t.string "composer_id"
+    t.string "nickname"
     t.integer "composition_date"
     t.boolean "multiple_instruments"
     t.string "main_instrument"
     t.string "key_signature"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "composer_id"
+    t.index ["composer_id"], name: "index_pieces_on_composer_id"
   end
 
+  add_foreign_key "pieces", "composers"
 end

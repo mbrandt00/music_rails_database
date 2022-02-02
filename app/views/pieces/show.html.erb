@@ -5,6 +5,7 @@
 
   <ul>
     <li> Composer: <%= @piece.composer.name %> </li>
+    <li> Type of Composition: <%= @piece.type_of_piece %></li>
     <li> Date of Composition: <%= @piece.composition_date %> </li>
     <li> Key Signature: <%= @piece.key_signature %> </li>
     <li> Composer's Age at Composition: <%= @piece.age_at_time_of_composition %> </li>
@@ -14,11 +15,9 @@
           else
             p "Piano + Orchestra"
           end   %>  </li>
-    <li>
+    <li class = "hide">
       <%= if @piece.nickname.nil? == false
             p "Nickname: #{@piece.nickname}"
-          else
-            skip
           end
           %>
     </li>

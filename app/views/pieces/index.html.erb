@@ -1,10 +1,29 @@
 <h1>Learned Pieces</h1>
 
 <% @pieces.each do |piece| %>
-  <h3><a href="/pieces/<%= piece.id %>">
-    <%= piece.type_of_piece %>
-    Opus. <%= piece.opus %>
-     <%= "No. #{piece.number}" if piece.number.nil? == false%>
-     <%= piece.nickname%></a>
-  </h3>
+  <h2>
+
+    <a href="/pieces/<%= piece.id %>">
+      Opus. <%= piece.opus %>
+       <%= "No. #{piece.number}" if piece.number.nil? == false%></a></h2>
+  <p>
+    <ul>
+      <li> Composer: <%= piece.composer.name %> </li>
+      <li> Date of Composition: <%= piece.composition_date %> </li>
+      <li> Key Signature: <%= piece.key_signature %> </li>
+      <li> Composer's Age at Composition: <%= piece.age_at_time_of_composition %> </li>
+      <li>
+        <%= if piece.multiple_instruments == false
+              p "Solo piano piece"
+            else
+              p "Piano + Orchestra"
+            end   %>  </li>
+      <li>
+        <%= if piece.nickname.nil? == false
+              p "Nickname: #{piece.nickname}"
+            end
+            %>
+      </li>
+    </ul>
+  </p>
 <% end %>

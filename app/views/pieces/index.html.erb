@@ -1,6 +1,10 @@
-<h1>All Songs</h1>
+<h1>Learned Pieces</h1>
 
 <% @pieces.each do |piece| %>
-  <h2><%= piece.opus %></h2>
-  <p>Type: <%= piece.type_of_piece %></p>
+  <h3><a href="/pieces/<%= piece.id %>">
+    <%= piece.type_of_piece %>
+    Opus. <%= piece.opus %>
+     <%= "No. #{piece.number}" if piece.number.nil? == false%>
+     <%= piece.nickname%></a>
+  </h3>
 <% end %>

@@ -5,6 +5,8 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 # simplecov coverage
 coverage
+# to-do
+to_do.txt
 # Ignore bundler config.
 /.bundle
 

@@ -1,0 +1,13 @@
+class CreateComposers < ActiveRecord::Migration[5.2]
+  def change
+    create_table :composers do |t|
+      t.string :name
+      t.integer :birth_year
+      t.integer :death_year
+      t.string :musical_era
+      t.integer :num_compositions
+      t.boolean :dead
+      t.timestamps
+    end
+  end
+end

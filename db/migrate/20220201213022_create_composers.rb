@@ -6,6 +6,7 @@ class CreateComposers < ActiveRecord::Migration[5.2]
       t.integer :death_year
       t.string :musical_era
       t.integer :num_compositions
+      t.string :ethnicity
       t.boolean :dead
       t.timestamps
     end

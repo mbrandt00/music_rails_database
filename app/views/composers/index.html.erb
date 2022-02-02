@@ -1,0 +1,4 @@
+<h1>Composers</h1>
+<% @composers.each do |composer| %>
+  <h3><a href="/composers/<%= composer.id %>"><%= composer.name %></a></h3>
+  <% end %>

@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2022_02_01_213759) do
     t.integer "death_year"
     t.string "musical_era"
     t.integer "num_compositions"
+    t.string "ethnicity"
     t.boolean "dead"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

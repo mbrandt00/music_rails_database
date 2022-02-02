@@ -1,10 +1,10 @@
 Composer.destroy_all
 Piece.destroy_all
 
-chopin = Composer.create!(name: "Chopin", birth_year: 1810, death_year: 1849, musical_era: "Romantic", num_compositions: 210, dead: true)
-beethoven = Composer.create!(name: 'Beethoven', birth_year: 1770, death_year: 1827, musical_era: "Classical", num_compositions: 722, dead: true)
-rachmaninoff = Composer.create!(name: 'Rachmaninoff', birth_year: 1873, death_year: 1943, musical_era: "Romantic", num_compositions: 50, dead: true)
-bach = Composer.create!(name: 'bach', birth_year: 1685, death_year: 1750, musical_era: "Baroque", num_compositions: 1128, dead: true)
+chopin = Composer.create!(name: "Frédéric François Chopin", birth_year: 1810, death_year: 1849, musical_era: "Romantic", num_compositions: 210, dead: true, ethnicity: 'Polish')
+beethoven = Composer.create!(name: 'Ludwig van Beethoven', birth_year: 1770, death_year: 1827, musical_era: "Classical", num_compositions: 722, dead: true, ethnicity: 'German')
+rachmaninoff = Composer.create!(name: 'Sergei Rachmaninoff[', birth_year: 1873, death_year: 1943, musical_era: "Romantic", num_compositions: 50, dead: true, ethnicity: 'Russian')
+bach = Composer.create!(name: 'Johann Sebastian Bach', birth_year: 1685, death_year: 1750, musical_era: "Baroque", num_compositions: 1128, dead: true, ethnicity: 'German')
 
 chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "ballad", composition_date: 1841, multiple_instruments: false, main_instrument: "piano", key_signature: "A-flat major")
 chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "sonata", composition_date: 1840, multiple_instruments: false, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')

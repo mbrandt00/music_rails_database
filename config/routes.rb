@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
   get '/pianos', to: 'pianos#index'
+  get '/manufacturers', to: 'manufacturers#index'
 end
 
 # User Story 8, Child Index Link

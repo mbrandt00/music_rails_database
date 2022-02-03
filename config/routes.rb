@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/composers/:composer_id/pieces', to: 'composers#compositions'
   post '/composers', to: 'composers#create'
   get '/', to: 'welcome#index'
+
+  get '/pianos', to: 'pianos#index'
 end
 
 # User Story 8, Child Index Link

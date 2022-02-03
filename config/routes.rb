@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   get '/composers', to: 'composers#index'
   get '/composers/:id', to: 'composers#info'
   get '/', to: 'welcome#index'
+
+  get '/pianos', to: 'pianos#index'
 end

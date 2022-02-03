@@ -1,24 +1,15 @@
 <h1>
   Opus. <%= @piece.opus %>
-     <%= "No. #{@piece.number}" if @piece.number.nil? == false%>
+     <%= "No. #{@piece.number}" if @piece.number%>
 </h1>
-
   <ul>
     <li> Composer: <%= @piece.composer.name %> </li>
     <li> Type of Composition: <%= @piece.type_of_piece %></li>
     <li> Date of Composition: <%= @piece.composition_date %> </li>
     <li> Key Signature: <%= @piece.key_signature %> </li>
     <li> Composer's Age at Composition: <%= @piece.age_at_time_of_composition %> </li>
-    <li>
-      <%= if @piece.multiple_instruments == false
-            p "Solo piano piece"
-          else
-            p "Piano + Orchestra"
-          end   %>  </li>
-    <li class = "hide">
-      <%= if @piece.nickname.nil? == false
-            p "Nickname: #{@piece.nickname}"
-          end
-          %>
-    </li>
-  </ul>
+    <li> <%= @piece.piano %> </li>
+    <% if @piece.nickname %>
+   <li> Nickname: <%= @piece.nickname %> </li>
+     <% end %>
+ </ul>

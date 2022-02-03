@@ -1,0 +1,15 @@
+<%= form_with url: '/composers', method: :post, local:true, id: 'form' do |form| %>
+  <h4><%= form.label :name %> </h4>
+    <p><%= form.text_field :name %></p>
+  <h4><%= form.label :birth_year %></h4>
+    <p><%= form.number_field :birth_year %></p>
+  <h4><%= form.label :death_year %></h4>
+    <p><%= form.number_field :death_year %></p>
+  <h4><%= form.label :musical_era %></h4>
+    <p><%= form.text_field :musical_era %></p>
+  <h4><%= form.label :ethnicity %></h4>
+    <p><%= form.text_field :ethnicity %></h4>
+  <h4><%= form.label :number_of_compositions %></h4>
+    <p><%= form.number_field :num_compositions %></p>
+  <%= form.submit 'Create Composer' %>
+<% end %>

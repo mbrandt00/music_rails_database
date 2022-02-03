@@ -11,7 +11,7 @@
       <li> Composer: <%= piece.composer.name %> </li>
       <li> Date of Composition: <%= piece.composition_date %> </li>
       <li> Key Signature: <%= piece.key_signature %> </li>
-      <li> Composer's Age at Composition: <%= piece.age_at_time_of_composition %> </li>
+      <li> Composer's age when published: <%= @age_at_time_of_composition %> </li>
       <li>
         <%= if piece.multiple_instruments == false
               p "Solo piano piece"

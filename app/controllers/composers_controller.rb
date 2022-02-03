@@ -12,8 +12,20 @@ class ComposersController < ApplicationController
   end
 
   def create
-    binding.pry
     Composer.create(composer_params)
+    redirect_to '/composers'
+  end
+
+  def edit
+    @composer = Composer.find(params[:id])
+  end
+
+  def update
+    binding.pry
+    composer = Composer.find(params[:id])
+    binding.pry
+    composer.update(composer_params)
+    composer.save
     redirect_to '/composers'
   end
 

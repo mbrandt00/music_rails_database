@@ -3,8 +3,9 @@ class CreateManufacturers < ActiveRecord::Migration[5.2]
     create_table :manufacturers do |t|
       t.string :maker
       t.string :location
-      t.string :year_opened
+      t.integer :year_opened
       t.boolean :family_owned
+      t.string :ceo
 
       t.timestamps
     end

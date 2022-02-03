@@ -5,5 +5,6 @@ class PiecesController < ApplicationController
 
   def show
     @piece = Piece.find(params[:id])
+    @age_at_time_of_composition = @piece.age_at_time_of_composition
   end
 end

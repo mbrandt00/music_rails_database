@@ -12,13 +12,8 @@ Rails.application.routes.draw do
   patch '/composers/:id/edit', to: 'composers#update'
 
   get '/', to: 'welcome#index'
-
+  get '/pieces/:id/edit', to: 'pieces#edit'
+  patch '/pieces/:id/edit', to: 'pieces#update'
   get '/pianos', to: 'pianos#index'
   get '/manufacturers', to: 'manufacturers#index'
 end
-
-# User Story 8, Child Index Link
-#
-# As a visitor
-# When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Child Index

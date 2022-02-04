@@ -1,7 +1,6 @@
 <h1>Create a new piece for <%= @composer.name%></h1>
-<%= form_with  method: :post, local:true, id: 'form' do |form| %>
+<%= form_with url: "/composers/#{@composer.id}", method: :post, local:true, id: 'form' do |form| %>
 <h4><%= form.label :opus %> </h4>
-<%= form.hidden_field :composer, :value => @composer.id %>
   <p><%= form.number_field :opus %></p>
 <h4><%= form.label :number %> </h4>
   <p><%= form.number_field :number %></p>
@@ -15,6 +14,9 @@
     <p><%= form.text_field :main_instrument %></p>
   <h4><%= form.label :nickname %></h4>
     <p><%= form.text_field :nickname %></p>
+  <h4><%= form.label :multiple_instruments %></h4>
+    <p><%= form.check_box :multiple_instruments %></p>
+
 
   <%= form.submit 'Create Piece' %>
 <% end %>

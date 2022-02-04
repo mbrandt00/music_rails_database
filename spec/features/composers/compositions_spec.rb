@@ -11,9 +11,8 @@ RSpec.describe "Allow new pieces to be made from a composer's pieces page", type
     fill_in 'composition_date', with: 2012
     fill_in 'key_signature', with: 'B-flat major'
     fill_in 'type_of_piece', with: 'Sonata'
-    fill_in 'multiple_instruments', with: false
     fill_in 'main_instrument', with: 'piano'
-    click_on 'Save Changes'
+    click_on 'Create Piece'
 
     expect(current_path).to eq("/composers/#{adams.id}/pieces")
     expect(page).to have_content('B-flat major')

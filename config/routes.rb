@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/composers/:id', to: 'composers#show'
   get '/composers/:composer_id/pieces', to: 'composers#compositions'
   get '/composers/:id/pieces/new', to: 'composers#create_composer_piece'
-  post '/composers/:id/pieces/new', to: 'pieces#create'
+  post '/composers/:id/', to: 'pieces#create'
   post '/composers', to: 'composers#create'
   get '/composers/:id/edit', to: 'composers#edit'
   patch '/composers/:id/edit', to: 'composers#update'

@@ -10,6 +10,7 @@ class PiecesController < ApplicationController
   def create
     composer = Composer.find(params[:id])
     composer.pieces.create(piece_params)
+    redirect_to "/composers/#{composer.id}/pieces"
   end
 
   private

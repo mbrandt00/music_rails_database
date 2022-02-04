@@ -1,0 +1,20 @@
+<h1>Edit <%="#{@composer.name}" %></h1>
+
+<%= form_with  method: :patch, local:true, id: 'form' do |form| %>
+<h4><%= form.label :name %> </h4>
+  <p><%= form.text_field :name, value:@composer.name %></p>
+<h4><%= form.label :birth_year %></h4>
+  <p><%= form.number_field :birth_year, value:@composer.birth_year %></p>
+<h4><%= form.label :death_year %></h4>
+  <p><%= form.number_field :death_year, value:@composer.death_year %></p>
+<h4><%= form.label :musical_era %></h4>
+  <p><%= form.text_field :musical_era, value:@composer.musical_era %></p>
+<h4><%= form.label :ethnicity %></h4>
+  <p><%= form.text_field :ethnicity, value:@composer.ethnicity %></h4>
+<h4><%= form.label :number_of_compositions %></h4>
+  <p><%= form.number_field :num_compositions, value:@composer.num_compositions %></p>
+<h4><%= form.label :tonal %></h4>
+  <p><%= form.check_box :tonal, value:@composer.tonal %></p>
+
+<%= form.submit 'Save Changes' %>
+<% end %>

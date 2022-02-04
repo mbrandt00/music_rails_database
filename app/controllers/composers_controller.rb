@@ -8,18 +8,38 @@ class ComposersController < ApplicationController
   end
 
   def compositions
-    @own_works = Composer.find(params[:composer_id]).pieces
+    @composer = Composer.find(params[:composer_id])
   end
 
   def create
-    binding.pry
     Composer.create(composer_params)
     redirect_to '/composers'
   end
+
+  def create_composer_piece
+    @composer = Composer.find(params[:id])
+  end
+
+  def edit
+    @composer = Composer.find(params[:id])
+  end
+
+  def update
+    composer = Composer.find(params[:id])
+    composer.update(composer_params)
+    composer.save
+    redirect_to "/composers/#{composer.id}"
+  end
+
 
   private
   def composer_params
     params.permit(:name, :birth_year, :death_year, :musical_era, :ethnicity,
     :num_compositions)
   end
+
+  def piece_params
+    params.permit(:opus, :number, :type_of_piece, :nickname, :composition_date, :multiple_instruments, :main_instrument, :key_signature)
+  end
+
 end

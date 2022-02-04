@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_02_03_194928) do
     t.string "musical_era"
     t.integer "num_compositions"
     t.string "ethnicity"
-    t.boolean "dead"
+    t.boolean "tonal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

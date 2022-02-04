@@ -21,12 +21,10 @@ class ComposersController < ApplicationController
   end
 
   def update
-    binding.pry
     composer = Composer.find(params[:id])
-    binding.pry
     composer.update(composer_params)
     composer.save
-    redirect_to '/composers'
+    redirect_to "/composers/#{composer.id}"
   end
 
   private

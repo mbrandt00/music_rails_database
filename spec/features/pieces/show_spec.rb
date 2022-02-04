@@ -8,11 +8,11 @@ RSpec.describe "Pieces show page", type: :feature do
     piece_1 = chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: false, main_instrument: "piano", key_signature: "A-flat major")
     visit "pieces/#{piece_1.id}"
     click_link "Edit Piece"
-    expect(current_path).to eq("/pieces/#{piece1.id}/edit")
-    fill_in 'number', with: '1'
+    expect(current_path).to eq("/pieces/#{piece_1.id}/edit")
+    # save_and_open_page
+    fill_in('opus', with: 3)
     click_on 'Save Changes'
-
-    expect(current_path).to eq("/composers/#{adams.id}")
+    expect(current_path).to eq("/pieces/#{piece_1.id}")
     expect(page).to have_content('1')
     end
   end

@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'capybara'
 
 RSpec.describe "Pieces index page", type: :feature do
   it 'will display all pieces and attributes' do

@@ -1,5 +1,5 @@
-<h1>Compositions by <%= "#{@own_works.first.composer.name}"%></h></h1>
-<p><%@own_works.each do  |piece| %>
+<h1>Compositions by <%= "#{@composer.name}"%></h1>
+<p><%@composer.pieces.each do  |piece| %>
   <ul>
     <li> Composer: <%= piece.composer.name %> </li>
     <li> Date of Composition: <%= piece.composition_date %> </li>
@@ -12,3 +12,4 @@
   </ul>
   <% end %>
 </p>
+<%= link_to 'New Piece', "/composers/#{@composer.id}/pieces/new" %>

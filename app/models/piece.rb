@@ -20,4 +20,9 @@ class Piece < ApplicationRecord
   def self.multiple_instruments
     where("multiple_instruments = true")
   end
+
+  def self.sort_compositions
+    binding.pry
+    order(params[:sort])
+  end
 end

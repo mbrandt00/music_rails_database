@@ -37,9 +37,4 @@ class ComposersController < ApplicationController
     params.permit(:name, :birth_year, :death_year, :musical_era, :ethnicity,
     :num_compositions)
   end
-
-  def piece_params
-    params.permit(:opus, :number, :type_of_piece, :nickname, :composition_date, :multiple_instruments, :main_instrument, :key_signature)
-  end
-
 end

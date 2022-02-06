@@ -1,0 +1,22 @@
+<h1>
+  Edit Opus. <%= @piece.opus %>
+     <%= "No. #{@piece.number}" if @piece.number%>
+</h1>
+
+<%= form_with method: :patch, local:true, id: 'form' do |form| %>
+  <h4><%=form.label :opus %> </h4>
+    <p><%= number_field(:piece, :opus, id: :opus) %></p>
+  <h4><%=form.label :type_of_piece %> </h4>
+    <p><%= text_field(:piece, :type_of_piece, id: :type_of_piece) %></p>
+  <h4><%=form.label :composition_date %> </h4>
+    <p><%= number_field(:piece, :composition_date, id: :composition_date) %></p>
+  <h4><%=form.label :key_signature, id: :key_signature %> </h4>
+    <p><%= text_field(:piece, :key_signature) %></p>
+  <h4><%=form.label :Multiple_Instruments? %> </h4>
+    <p><%= check_box(:piece, :piano, id: :multiple_instruments) %></p>
+  <h4><%=form.label :nickname %> </h4>
+    <p><%= text_field(:piece, :nickname, id: :nickname) %></p>
+
+<%= form.submit 'Save Changes' %>
+
+<% end %>

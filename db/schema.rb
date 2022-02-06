@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_02_03_194928) do
     t.string "musical_era"
     t.integer "num_compositions"
     t.string "ethnicity"
-    t.boolean "tonal"
+    t.boolean "dead"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,11 +30,8 @@ ActiveRecord::Schema.define(version: 2022_02_03_194928) do
   create_table "manufacturers", force: :cascade do |t|
     t.string "maker"
     t.string "location"
-    t.integer "year_opened"
+    t.string "year_opened"
     t.boolean "family_owned"
-    t.string "ceo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "pianos", force: :cascade do |t|

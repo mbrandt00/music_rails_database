@@ -16,4 +16,16 @@ RSpec.describe "Pieces show page", type: :feature do
     expect(page).to have_content('1')
     end
   end
+  describe 'deleting piece' do
+    it 'will allow a piece to be deleted while keeping the composer' do
+      chopin = Composer.create!(name: "Frédéric François Chopin", birth_year: 1810, death_year: 1849, musical_era: "Romantic", num_compositions: 210, tonal: true, ethnicity: 'Polish')
+
+      piece_1 = chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: true, main_instrument: "piano", key_signature: "A-flat major")
+      visit "pieces/#{piece_1.id}"
+      click_button "Delete Piece"
+      expect(current_path).to eq('/pieces')
+      expect(page).to_not have_content('A-flat major')
+      expect(page).to have_content('C-flat major')
+    end
+  end
 end

@@ -1,5 +1,7 @@
-<h1>Compositions by <%= "#{@compositions.first.composer.name}"%></h1>
-<p><%@compositions.each do  |piece| %>
+
+<h1>Compositions by <%= "#{@composer.name}"%></h1>
+<%@compositions.each do  |piece| %>
+<h3><%= link_to "Edit Piece", "/pieces/#{piece.id}/edit" %></h3>
   <ul>
     <li> Opus <%= piece.opus %>
            <%= "No. #{piece.number}" if piece.number.nil? == false%> </li>
@@ -11,8 +13,7 @@
     <li> Nickname: <%= piece.nickname %> </li>
          <% end %>
   </ul>
-  <% end %>
-</p>
+<% end %>
 <%= link_to 'New Piece', "/composers/#{@compositions.first.composer.id}/pieces/new" %>
 <h3>  Sort Pieces by: </h3>
 <p> <%= link_to "Opus and Number", request.params.merge(:sort => ["opus", "number"]) %> </p>

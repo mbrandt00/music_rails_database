@@ -24,7 +24,6 @@ RSpec.describe "Pieces index page", type: :feature do
     chopin = Composer.create!(name: "Frédéric François Chopin", birth_year: 1810, death_year: 1849, musical_era: "Romantic", num_compositions: 210, tonal: true, ethnicity: 'Polish')
     piece_1 = chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: true, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')
     visit "/pieces"
-    save_and_open_page
     click_link("Edit Piece")
     expect(current_path).to eq("/pieces/#{piece_1.id}/edit")
     fill_in('opus', with: 3)

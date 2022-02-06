@@ -12,3 +12,4 @@
 </ul>
 <p><%= link_to "Edit Composer", "#{@composer.id}/edit" %> </p>
 <p> <%= link_to "Composer's Pieces", "#{@composer.id}/pieces" %> </p>
+<p> <%= button_to 'Delete Composer', "/composers/#{@composer.id}", method: :delete %></p>

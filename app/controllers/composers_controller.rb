@@ -33,6 +33,11 @@ class ComposersController < ApplicationController
     redirect_to "/composers/#{composer.id}"
   end
 
+  def destroy
+    Composer.destroy(params[:id])
+    redirect_to '/composers'
+  end
+
 
   private
   def composer_params

@@ -16,12 +16,15 @@ Rails.application.routes.draw do
   patch '/pieces/:id/edit', to: 'pieces#update'
   get '/pianos', to: 'pianos#index'
   get '/manufacturers', to: 'manufacturers#index'
+  delete 'composers/:id', to: 'composers#destroy'
 end
 
-# User Story 18, Child Update From Childs Index Page (x1)
+# User Story 19, Parent Delete (x2)
 #
 # As a visitor
-# When I visit the `child_table_name` index page or a parent `child_table_name` index page
-# Next to every child, I see a link to edit that child's info
-# When I click the link
-# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11
+# When I visit a parent show page
+# Then I see a link to delete the parent
+# When I click the link "Delete Parent"
+# Then a 'DELETE' request is sent to '/parents/:id',
+# the parent is deleted, and all child records are deleted
+# and I am redirected to the parent index page where I no longer see this parent

@@ -8,7 +8,8 @@ class ComposersController < ApplicationController
   end
 
   def compositions
-    @composer = Composer.find(params[:composer_id])
+    @compositions = Composer.find(params[:composer_id]).pieces
+    @compositions = @compositions.order(params[:sort]) if params[:sort]
   end
 
   def create

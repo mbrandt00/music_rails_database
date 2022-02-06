@@ -14,8 +14,12 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index'
   get '/pieces/:id/edit', to: 'pieces#edit'
   patch '/pieces/:id/edit', to: 'pieces#update'
-  get '/pianos', to: 'pianos#index'
-  get '/manufacturers', to: 'manufacturers#index'
   delete 'composers/:id', to: 'composers#destroy'
   delete 'pieces/:id', to: 'pieces#destroy'
+
+  get '/pianos', to: 'pianos#index'
+
+  get '/manufacturers', to: 'manufacturers#index'
+  get '/manufacturers/:id', to: 'manufacturers#show'
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_03_194928) do
+ActiveRecord::Schema.define(version: 2022_02_06_194955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_02_03_194928) do
     t.string "musical_era"
     t.integer "num_compositions"
     t.string "ethnicity"
-    t.boolean "dead"
+    t.boolean "tonal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,8 +30,11 @@ ActiveRecord::Schema.define(version: 2022_02_03_194928) do
   create_table "manufacturers", force: :cascade do |t|
     t.string "maker"
     t.string "location"
-    t.string "year_opened"
+    t.integer "year_opened"
     t.boolean "family_owned"
+    t.string "ceo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pianos", force: :cascade do |t|
@@ -42,6 +45,8 @@ ActiveRecord::Schema.define(version: 2022_02_03_194928) do
     t.boolean "acoustic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "manufacturer_id"
+    t.index ["manufacturer_id"], name: "index_pianos_on_manufacturer_id"
   end
 
   create_table "pieces", force: :cascade do |t|
@@ -59,5 +64,6 @@ ActiveRecord::Schema.define(version: 2022_02_03_194928) do
     t.index ["composer_id"], name: "index_pieces_on_composer_id"
   end
 
+  add_foreign_key "pianos", "manufacturers"
   add_foreign_key "pieces", "composers"
 end

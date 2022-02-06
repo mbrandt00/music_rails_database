@@ -1,10 +1,17 @@
 Composer.destroy_all
+Manufacturer.destroy_all
 Piece.destroy_all
+Piano.destroy_all
 
 chopin = Composer.create!(name: "Frédéric François Chopin", birth_year: 1810, death_year: 1849, musical_era: "Romantic", num_compositions: 210, tonal: true, ethnicity: 'Polish')
 beethoven = Composer.create!(name: 'Ludwig van Beethoven', birth_year: 1770, death_year: 1827, musical_era: "Classical", num_compositions: 722, tonal: true, ethnicity: 'German')
 rachmaninoff = Composer.create!(name: 'Sergei Rachmaninoff', birth_year: 1873, death_year: 1943, musical_era: "Romantic", num_compositions: 50, tonal: true, ethnicity: 'Russian')
 bach = Composer.create!(name: 'Johann Sebastian Bach', birth_year: 1685, death_year: 1750, musical_era: "Baroque", num_compositions: 1128, tonal: true, ethnicity: 'German')
+
+steinway = Manufacturer.create!(maker: "Steinway & Sons", location: "Manhattan, USA", year_opened: "1853", family_owned: true)
+bechstein = Manufacturer.create!(maker: "C. Bechstein", location: "Berlin, Germany", year_opened: "1853", family_owned: true)
+yamaha = Manufacturer.create!(maker: "Yamaha", location: "Hamamatsu, Japan", year_opened: "1887", family_owned: false)
+nord = Manufacturer.create!(maker: "Nord", location: "Stockholm, Sweden", year_opened: "1983", family_owned: false)
 
 chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: false, main_instrument: "piano", key_signature: "A-flat major")
 chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: false, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')

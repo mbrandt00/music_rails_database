@@ -7,10 +7,10 @@
     <li> Type of Composition: <%= @piece.type_of_piece %></li>
     <li> Date of Composition: <%= @piece.composition_date %> </li>
     <li> Key Signature: <%= @piece.key_signature %> </li>
-    <li> Composer's Age at Composition: <%= @piece.age_at_time_of_composition %> </li>
     <li> <%= @piece.piano %> </li>
     <% if @piece.nickname %>
    <li> Nickname: <%= @piece.nickname %> </li>
      <% end %>
  </ul>
  <%= link_to 'Edit Piece', "/pieces/#{@piece.id}/edit" %>
+ <%= button_to 'Delete Piece', "/pieces/#{@piece.id}", method: :delete %>

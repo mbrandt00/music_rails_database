@@ -24,6 +24,10 @@ class PiecesController < ApplicationController
     redirect_to "/pieces/#{piece.id}"
   end
 
+  def destroy
+    Piece.destroy(params[:id])
+    redirect_to "/pieces"
+  end
   private
 
   def piece_params

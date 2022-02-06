@@ -16,12 +16,6 @@ Rails.application.routes.draw do
   patch '/pieces/:id/edit', to: 'pieces#update'
   get '/pianos', to: 'pianos#index'
   get '/manufacturers', to: 'manufacturers#index'
+  delete 'composers/:id', to: 'composers#destroy'
+  delete 'pieces/:id', to: 'pieces#destroy'
 end
-
-# User Story 18, Child Update From Childs Index Page (x1)
-#
-# As a visitor
-# When I visit the `child_table_name` index page or a parent `child_table_name` index page
-# Next to every child, I see a link to edit that child's info
-# When I click the link
-# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11

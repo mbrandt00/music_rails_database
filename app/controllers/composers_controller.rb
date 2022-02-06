@@ -8,9 +8,17 @@ class ComposersController < ApplicationController
   end
 
   def compositions
+
     @composer = Composer.find(params[:composer_id])
-    @compositions = Composer.find(params[:composer_id]).pieces
-    @compositions = @compositions.order(params[:sort]) if params[:sort]
+    @compositions = params[:sort].blank? ? @composer.pieces : @composer.pieces.order(params[:sort])
+    @types = @compositions.all.map(&:type_of_piece).uniq
+    binding.pry
+    @compositions = params[:filter].present? ? @compositions.params_filter : @compositions.all
+    binding.pry
+  end
+
+  def params_filter
+    binding.pry
   end
 
   def create

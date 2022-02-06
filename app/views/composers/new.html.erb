@@ -12,7 +12,7 @@
   <h4><%= form.label :number_of_compositions %></h4>
     <p><%= form.number_field :num_compositions %></p>
   <h4><%= form.label :tonal %></h4>
-    <p><%= form.check_box :tonal, value:@composer.tonal %></p>
+    <p><%= form.check_box :tonal %></p>
 
   <%= form.submit 'Create Composer' %>
 <% end %>

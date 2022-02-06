@@ -1,6 +1,6 @@
 <h1>Learned Pieces</h1>
 
-<% @pieces.multiple_instruments.each do |piece| %>
+<% @pieces.each do |piece| %>
   <h2>
 
     <a href="/pieces/<%= piece.id %>">
@@ -13,7 +13,6 @@
       <li> Type of Piece: <%= piece.type_of_piece %> </li>
       <li> Date of Composition: <%= piece.composition_date %> </li>
       <li> Key Signature: <%= piece.key_signature %> </li>
-      <li> Composer's age when published: <%= piece.age_at_time_of_composition %> </li>
       <li> <%= piece.piano%> </li>
        <% if piece.nickname %>
       <li> Nickname: <%= piece.nickname %> </li>

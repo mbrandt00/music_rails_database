@@ -62,20 +62,20 @@ bach.pieces.create(opus: 825, number: 1, type_of_piece: "Prelude-Fugue", composi
 
 bach.pieces.create(opus: 816, number: 5, type_of_piece: "Suite", composition_date: 1722, multiple_instruments: false, main_instrument: "piano", key_signature: "French")
 
-steinway.pianos.create!(model: "Model D", style: "Concert Grand", price: 150000, color: "black", acoustic: true, length: "8ft 11in")
-steinway.pianos.create!(model: "Model B", style: "Concert Grand", price: 101700, color: "black", acoustic: true, length: "6ft 10in")
-steinway.pianos.create!(model: "Model A", style: "Concert Grand", price: 85000, color: "black", acoustic: true, length: "6ft 2in")
-steinway.pianos.create!(model: "Model O", style: "Concert Grand", price: 70000, color: "black", acoustic: true, length: "5ft 10in")
+steinway.pianos.create!(model: "Model D", style: "Concert Grand", price: 150000, color: "black", acoustic: true) #length: "8ft 11in")
+steinway.pianos.create!(model: "Model B", style: "Concert Grand", price: 101700, color: "black", acoustic: true) #length: "6ft 10in")
+steinway.pianos.create!(model: "Model A", style: "Concert Grand", price: 85000, color: "black", acoustic: true) #length: "6ft 2in")
+steinway.pianos.create!(model: "Model O", style: "Concert Grand", price: 70000, color: "black", acoustic: true) #length: "5ft 10in")
 
-bechstein.pianos.create!(model: "D 282", style: "Concert Grand", price: 269900, color: "black", acoustic: true, length: "5ft 3in")
-bechstein.pianos.create!(model: "A 114", style: "Upright", price: 27900, color: "black", acoustic: true, length: "2ft 2in")
-bechstein.pianos.create!(model: "A 208", style: "Concert Grand", price: 81900, color: "black", acoustic: true, length: "6ft 1in")
-bechstein.pianos.create!(model: "A 192", style: "Concert Grand", price: 166900, color: "brown", acoustic: true, length: "4ft 11in")
+bechstein.pianos.create!(model: "D 282", style: "Concert Grand", price: 269900, color: "black", acoustic: true) #length: "5ft 3in")
+bechstein.pianos.create!(model: "A 114", style: "Upright", price: 27900, color: "black", acoustic: true) #length: "2ft 2in")
+bechstein.pianos.create!(model: "A 208", style: "Concert Grand", price: 81900, color: "black", acoustic: true) #length: "6ft 1in")
+bechstein.pianos.create!(model: "A 192", style: "Concert Grand", price: 166900, color: "brown", acoustic: true) #length: "4ft 11in")
 
-yamaha.pianos.create!(model: "Clavinova CLP-775", style: "Digital", price: 5000, color: "black or brown", acoustic: false, length: "1ft 8in")
+yamaha.pianos.create!(model: "Clavinova CLP-775", style: "Digital", price: 5000, color: "black or brown", acoustic: false) #length: "1ft 8in")
 
-nord.pianos.create!(model: "Stage 3", style: "Digital", price: 4700, color: "red", acoustic: false, length: "1ft 4in")
-nord.pianos.create!(model: "Electro 5", style: "Digital", price: 3300, color: "red", acoustic: false, length: "1ft 2in")
-nord.pianos.create!(model: "Piano 5", style: "Digital", price: 3500, color: "red", acoustic: false, length: "1ft 5in")
+nord.pianos.create!(model: "Stage 3", style: "Digital", price: 4700, color: "red", acoustic: false) #length: "1ft 4in"
+nord.pianos.create!(model: "Electro 5", style: "Digital", price: 3300, color: "red", acoustic: false) #length: "1ft 2in")
+nord.pianos.create!(model: "Piano 5", style: "Digital", price: 3500, color: "red", acoustic: false) #length: "1ft 5in")
 
-bösendorfer.pianos.create!(model: "290 Imperial", style: "Concert Grand", price: 126999, color: "black", acoustic: true, length: "9ft 6in")
+bösendorfer.pianos.create!(model: "290 Imperial", style: "Concert Grand", price: 126999, color: "black", acoustic: true) #length: "9ft 6in")

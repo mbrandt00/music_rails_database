@@ -18,4 +18,5 @@ class Piece < ApplicationRecord
     where("multiple_instruments = true")
   end
 
+
 end

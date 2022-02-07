@@ -13,9 +13,5 @@ class Composer < ApplicationRecord
     pieces.order(composition_date: :desc).first[:composition_date]
   end
 
-  # def params_filter
-  #   binding.pry
-  # end
-
 
 end

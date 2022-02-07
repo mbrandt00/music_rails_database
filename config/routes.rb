@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete 'pieces/:id', to: 'pieces#destroy'
 
   get '/pianos', to: 'pianos#index'
+  get '/pianos/:id', to: 'pianos#show'
 
   get '/manufacturers', to: 'manufacturers#index'
   get '/manufacturers/:id', to: 'manufacturers#show'

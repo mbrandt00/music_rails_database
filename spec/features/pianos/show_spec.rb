@@ -10,17 +10,19 @@ require 'rails_helper'
      piano_10 = nord.pianos.create!(model: "Stage 3", style: "Digital", price: 4700, color: "red", acoustic: false) #length: "1ft 4in"
 
      visit "/pianos/#{piano_1.id}"
-     save_and_open_page
      expect(page).to have_content(piano_1.model)
-     # expect(page).to have_content(piano_1.style)
-     # expect(page).to have_content(piano_1.price)
-     # expect(page).to have_content(piano_1.color)
-     # expect(page).to have_content(piano_1.acoustic)
-     # expect(page).to have_content(piano_10.model)
-     # expect(page).to have_content(piano_10.style)
-     # expect(page).to have_content(piano_10.price)
-     # expect(page).to have_content(piano_10.color)
-     # expect(page).to have_content(piano_10.acoustic)
+     expect(page).to have_content(piano_1.style)
+     expect(page).to have_content(piano_1.price)
+     expect(page).to have_content(piano_1.color)
+     expect(page).to have_content(piano_1.acoustic)
+
+     visit "/pianos/#{piano_10.id}"
+     # save_and_open_page
+     expect(page).to have_content(piano_10.model)
+     expect(page).to have_content(piano_10.style)
+     expect(page).to have_content(piano_10.price)
+     expect(page).to have_content(piano_10.color)
+     expect(page).to have_content(piano_10.acoustic)
    end
 
  end

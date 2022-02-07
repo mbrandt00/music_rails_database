@@ -4,6 +4,6 @@ class PianosController < ApplicationController
   end
 
   def show
-    @piano = Piano.find(params[:id])    
+    @piano = Piano.find(params[:id])
   end
 end

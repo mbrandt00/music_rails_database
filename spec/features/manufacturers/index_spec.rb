@@ -25,7 +25,7 @@ require 'rails_helper'
      # Manufacturer.create!(maker: "Steinway & Sons", location: "Manhattan, USA", year_opened: "1853", family_owned: true, ceo: "Ron Losby")
      michael_brandt = Manufacturer.create!(maker: "Fuck You", location: "Stockholm, Sweden", year_opened: "1853", family_owned: true, ceo: "Stefan Freymuth")
      visit "/manufacturers"
-     save_and_open_page
+     # save_and_open_page
      expect(current_path).to eq('/manufacturers')
      expect(michael_brandt.location).to appear_before(steinway.location)
    end

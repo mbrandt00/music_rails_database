@@ -1,5 +1,5 @@
 <h1>Create a new piece for <%= @composer.name%></h1>
-<%= form_with url: "/composers/#{@composer.id}", method: :post, local:true, id: 'form' do |form| %>
+<%= form_with url: "/composers/#{@composer.id}/pieces", method: :post, local:true, id: 'form' do |form| %>
 <h4><%= form.label :opus %> </h4>
   <p><%= form.number_field :opus %></p>
 <h4><%= form.label :number %> </h4>

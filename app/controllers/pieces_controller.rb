@@ -8,8 +8,8 @@ class PiecesController < ApplicationController
   end
 
   def create
-    composer = Composer.find(params[:id])
-    composer.pieces.create(piece_params)
+    composer = Composer.find(params[:composer_id])
+    piece = composer.pieces.create(create_params)
     redirect_to "/composers/#{composer.id}/pieces"
   end
 
@@ -31,8 +31,11 @@ class PiecesController < ApplicationController
   private
 
   def piece_params
-    params.permit(piece: [:opus, :number, :type_of_piece, :nickname, :composition_date, :multiple_instruments, :main_instrument, :key_signature])
-  end
+      params.permit(piece: [:opus, :number, :type_of_piece, :nickname, :composition_date, :multiple_instruments, :main_instrument, :key_signature])
+    end
 
+    def create_params
+      params.permit(:opus, :number, :type_of_piece, :nickname, :composition_date, :multiple_instruments, :main_instrument, :key_signature)
+    end
 
 end

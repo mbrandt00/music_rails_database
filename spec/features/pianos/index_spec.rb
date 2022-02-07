@@ -10,7 +10,7 @@ require 'rails_helper'
      piano_4 = steinway.pianos.create!(model: "Model O", style: "Concert Grand", price: 70000, color: "black", acoustic: true) #length: "5ft 10in")
 
      visit '/pianos'
-     save_and_open_page
+     # save_and_open_page
      expect(page).to have_content(piano_1.model)
      expect(page).to have_content(piano_2.model)
      expect(page).to have_content(piano_3.model)

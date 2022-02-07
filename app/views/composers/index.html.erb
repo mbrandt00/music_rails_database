@@ -1,7 +1,7 @@
 <h1>Composers</h1>
 <% @composers.each do |composer| %>
   <h3><a href="/composers/<%= composer.id %>"><%= composer.name %></a></h3>
-  <%= link_to 'Edit Composer', "/composers/#{composer.id}/edit" %>
+  <h4 class = 'edit'><%= link_to 'Edit Composer', "/composers/#{composer.id}/edit" %> </h4>
   <p><%= composer.created_at.in_time_zone('MST').strftime("Created on %m/%d/%Y at %I:%M %p")   %> </p>
   <p><%= composer.updated_at.in_time_zone('MST').strftime("Updated on %m/%d/%Y at %I:%M %p")   %> </p>
   <% end %>

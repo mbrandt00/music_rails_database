@@ -1,5 +1,4 @@
 class Piece < ApplicationRecord
-  attr_reader :key_signature
   belongs_to :composer
 
   def piano

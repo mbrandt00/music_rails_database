@@ -1,7 +1,7 @@
-<h1>This Manufacturer Has <%= @manufacturer.pianos.count %> Pianos</h1>
 <h1><%= @manufacturer.maker %></h1>
+<h3>This Manufacturer Has <%= @manufacturer.pianos.count %> Pianos</h3>
 <% @manufacturer.pianos.each do |piano| %>
-  <h3><%= piano.model%></h3>
+  <h4><%= piano.model%></h4>
   <p>Piano style: <%= piano.style %></p>
   <p>Price: <%= piano.price %></p>
   <p>Color: <%= piano.color %></p>

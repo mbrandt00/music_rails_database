@@ -1,5 +1,10 @@
-<h1>Manufacturers</h1>
 
+<h1>Manufacturers</h1>
 <% @manufacturers.each do |manufacturer| %>
-  <p><%= manufacturer.maker %></p>
-<% end %>
+  <h3><a href="/manufacturers/<%= manufacturer.id %>"><%= manufacturer.maker %></a></h3>
+  <p><%= manufacturer.created_at.in_time_zone('MST').strftime("Created on %m/%d/%Y at %I:%M %p")%></p>
+  <p><%= manufacturer.location%></p>
+  <p><%= manufacturer.updated_at.in_time_zone('MST').strftime("Updated on %m/%d/%Y at %I:%M %p")%></p>
+  <% end %>
+
+<%= link_to 'New Manufacturer', '/manufacturers/new' %>

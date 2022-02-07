@@ -1,4 +1,5 @@
 class Piece < ApplicationRecord
+  attr_reader :key_signature
   belongs_to :composer
 
   def piano
@@ -16,5 +17,6 @@ class Piece < ApplicationRecord
   def self.multiple_instruments
     where("multiple_instruments = true")
   end
+
 
 end

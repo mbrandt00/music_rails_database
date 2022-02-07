@@ -9,9 +9,22 @@ class ComposersController < ApplicationController
 
   def compositions
     @composer = Composer.find(params[:composer_id])
-    @compositions = Composer.find(params[:composer_id]).pieces
-    @compositions = @compositions.order(params[:sort]) if params[:sort]
+    @compositions = params[:sort].present? ? @composer.pieces : @composer.pieces.order(params[:sort])
+    @types = @compositions.all.map(&:type_of_piece).uniq
+    @compositions = params[:filter].present? ? filter(@compositions) : @compositions.all
+    # @compositions = @compositions.order(params[:sort]) if params[:sort]
   end
+
+
+
+  def filter(relation)
+    a = params.fetch(:filter,{})
+    pieces = relation.where(type_of_piece: a[:pieces]) if a[:pieces].present?
+    pieces = pieces.where("composition_date > ?", a[:first_year]) if a[:first_year].present?
+    pieces = relation.where("composition_date < ?", a[:last_year]) if a[:last_year].present?
+    return pieces
+  end
+
 
   def create
     Composer.create(composer_params)
@@ -43,5 +56,8 @@ class ComposersController < ApplicationController
   def composer_params
     params.permit(:name, :birth_year, :death_year, :musical_era, :ethnicity,
     :num_compositions)
+  end
+  def piece_params
+    params.permit(filter: [:pieces, :first_year, :last_year])
   end
 end

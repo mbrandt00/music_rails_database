@@ -1,5 +1,16 @@
 
 <h1>Compositions by <%= "#{@composer.name}"%></h1>
+<div class="Filters">
+  <h2>Filter Pieces</h2>
+    <%= form_tag("/composers/#{@composer.id}/pieces") do %>
+
+      <p> Types of Pieces: <%= select_tag("filter[pieces]", options_for_select(@types, params[:filter_piece]), multiple: true) %> </p>
+      <p><%= select_tag  "filter[first_year]", options_for_select((@composer.first_piece_year..@composer.last_piece_year),  params[:start]), include_blank: "Year of Earliest Composition" %> </p>
+      <p><%= select_tag "filter[last_year]", options_for_select((@composer.first_piece_year..@composer.last_piece_year), params[:end]), include_blank: "Year of Last Composition " %> </p>
+      <%= submit_tag "Filter" %>
+    <% end %>
+</div>
+
 <%@compositions.each do  |piece| %>
 <h3><%= link_to "Edit Piece", "/pieces/#{piece.id}/edit" %></h3>
   <ul>

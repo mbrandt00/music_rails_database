@@ -1,5 +1,10 @@
 <h1>Piano Models</h1>
 
 <% @pianos.each do |piano| %>
-  <p><%= piano.model %></p>
+  <h3><%= piano.model%></h3>
+  <p>Piano style: <%= piano.style %></p>
+  <p>Price: <%= piano.price %></p>
+  <p>Color: <%= piano.color %></p>
+  <p>Created at: <%= piano.created_at %></p>
+  <p>Updated at: <%= piano.updated_at %></p>
 <% end %>

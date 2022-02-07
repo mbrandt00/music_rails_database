@@ -9,7 +9,14 @@ RSpec.describe 'Index page' do
       visit '/composers'
       expect(page).to have_content(chopin.name)
     end
-    it 'can create a new composer' do
+    it 'will show the most recently created composer first and provide when it was created' do #6
+      tchaikovsky = Composer.create!(name: "Tchaikovsky", birth_year: 1840, death_year: 1893, musical_era: "Romantic", num_compositions: 632, tonal: true, ethnicity: 'Russian')
+      visit '/composers'
+      expect(tchaikovsky.name).to appear_before(chopin.name)
+      expect(page).to have_content('Created on')
+      expect(page).to have_content('Updated on')
+    end
+    it 'can create a new composer' do #11
       visit '/composers'
       click_link 'New Composer'
       fill_in 'Name', with: "Michael Brandt"
@@ -22,7 +29,7 @@ RSpec.describe 'Index page' do
       expect(page).to have_content('Michael Brandt')
     end
     describe 'When I visit the composer index page, next to each composer is a link to edit parents info. When I click the link, I can edit the info' do
-      it 'can edit a composer with a button click' do
+      xit 'can edit a composer with a button click' do
         adams = Composer.create!(name: 'John Adams', birth_year: 1947, musical_era: "Modern", num_compositions: 80, tonal: false, ethnicity: 'American')
         visit '/composers/'
         click_link "Edit Composer"

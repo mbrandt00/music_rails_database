@@ -8,7 +8,7 @@ RSpec.describe "Compositions Page", type: :feature do
     piece_2 = chopin.pieces.create!(opus: 21, number: nil, type_of_piece: "Concerto", composition_date: 1830, multiple_instruments: true, main_instrument: "piano", key_signature: "F minor")
     piece_3 = chopin.pieces.create!(opus: 10, number: 3, type_of_piece: "Etude", composition_date: 1833, multiple_instruments: false, main_instrument: "piano", key_signature: "E major", nickname:'Tristesse')
     piece_4 = adams.pieces.create!(opus: 12, number: 3, type_of_piece: "Sonata", composition_date: 1954, multiple_instruments: false, main_instrument: "piano", key_signature: "E major")
-    visit "/composers/#{chopin.id}/pieces"
+    visit "/composers/#{chopin.id}/index"
     expect(page).to have_content(piece_1.opus)
     expect(page).to have_content(piece_2.opus)
     expect(page).to have_content(piece_3.opus)
@@ -16,7 +16,7 @@ RSpec.describe "Compositions Page", type: :feature do
   end
   it 'will allow new pieces to be created' do #13
     piece = adams.pieces.create!(opus: 10, composition_date: 2000, key_signature: 'C major', type_of_piece: 'Bagtelle', multiple_instruments: false, main_instrument: 'piano')
-    visit "/composers/#{adams.id}/pieces"
+    visit "/composers/#{adams.id}/index"
     click_link "New Piece"
     expect(current_path).to eq("/composers/#{adams.id}/index/new")
     fill_in 'opus', with: '85'
@@ -25,27 +25,34 @@ RSpec.describe "Compositions Page", type: :feature do
     fill_in 'type_of_piece', with: 'Sonata'
     fill_in 'main_instrument', with: 'piano'
     click_on 'Create Piece'
-    expect(current_path).to eq("/composers/#{adams.id}/pieces")
+    expect(current_path).to eq("/composers/#{adams.id}/index")
     expect(page).to have_content('B-flat major')
   end
   it 'has a link to edit each piece' do
     piece = adams.pieces.create!(opus: 10, composition_date: 2000, key_signature: 'C major', type_of_piece: 'Bagtelle', multiple_instruments: false, main_instrument: 'piano', )
-    visit "/composers/#{adams.id}/pieces"
+    visit "/composers/#{adams.id}/index"
     click_link "Edit Piece"
     fill_in 'composition_date', with: 2014
     click_on 'Save Changes'
 
   end
-  describe 'When i visit composer composition page I see form for numeric input' do
-    it 'will sort pieces by date' do
-      chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: false, main_instrument: "piano", key_signature: "A-flat major")
-      chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: false, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')
-      chopin.pieces.create!(opus: 21, number: nil, type_of_piece: "Concerto", composition_date: 1830, multiple_instruments: true, main_instrument: "piano", key_signature: "F minor")
-      chopin.pieces.create!(opus: 10, number: 3, type_of_piece: "Etude", composition_date: 1833, multiple_instruments: false, main_instrument: "piano", key_signature: "E major", nickname:'Tristesse')
-      chopin.pieces.create!(opus: 10, number: 8, type_of_piece: "Etude", composition_date: 1833, multiple_instruments: false, main_instrument: "piano", key_signature: "F major")
-      chopin.pieces.create!(opus: 10, number: 12, type_of_piece: "Etude", composition_date: 1833, multiple_instruments: false, main_instrument: "piano", key_signature: "C minor", nickname:'Revolutionary')
-      visit "/composers/#{chopin.id}/pieces"
-      click_button
+  describe 'When i visit composer composition page I see to filter' do
+    it 'will sort pieces by date and piece type' do
+      piece_1 = chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: false, main_instrument: "piano", key_signature: "A-flat major")
+      piece_2 = chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: false, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')
+      piece_3 = chopin.pieces.create!(opus: 21, number: nil, type_of_piece: "Concerto", composition_date: 1830, multiple_instruments: true, main_instrument: "piano", key_signature: "F minor")
+      piece_4 = chopin.pieces.create!(opus: 10, number: 3, type_of_piece: "Etude", composition_date: 1833, multiple_instruments: false, main_instrument: "piano", key_signature: "E major", nickname:'Tristesse')
+      piece_5 = chopin.pieces.create!(opus: 10, number: 8, type_of_piece: "Etude", composition_date: 1833, multiple_instruments: false, main_instrument: "piano", key_signature: "F major")
+      piece_6 = chopin.pieces.create!(opus: 10, number: 12, type_of_piece: "Etude", composition_date: 1836, multiple_instruments: false, main_instrument: "piano", key_signature: "C minor", nickname:'Revolutionary')
+      visit "/composers/#{chopin.id}/index"
+      select "Etude", from: 'filter_pieces'
+      select "1835", from: 'filter_first_year'
+      select "1840", from: 'filter_last_year'
+      click_button "Filter"
+      save_and_open_page
+      expect(current_path).to eq("/composers/#{chopin.id}/index")
+      expect(page).to have_content(piece_6.number)
+      expect(page).to_not have_content(piece_4.nickname)
     end
   end
 end

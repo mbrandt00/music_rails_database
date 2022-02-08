@@ -12,7 +12,7 @@ class CompositionsController < ApplicationController
   def create
     composer = Composer.find(params[:id])
     piece = composer.pieces.create(create_params)
-    redirect_to "/composers/#{composer.id}/pieces"
+    redirect_to "/composers/#{composer.id}/index"
   end
 
   private

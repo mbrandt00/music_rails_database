@@ -7,13 +7,6 @@ class ComposersController < ApplicationController
     @composer = Composer.find(params[:id])
   end
 
-  def compositions
-    binding.pry
-    @composer = Composer.find(params[:composer_id])
-    @compositions = Piece.index_display(sanitize(params[:search]))
-    binding.pry
-  end
-
   def create
     Composer.create(composer_params)
     redirect_to '/composers'

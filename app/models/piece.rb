@@ -13,7 +13,9 @@ class Piece < ApplicationRecord
     all.order(:type_of_piece, :opus, number: :asc)
   end
 
-
+  def age_at_time_of_composition
+    self.composition_date - composer.birth_year
+  end
 
   def self.multiple_instruments
     where("multiple_instruments = true")

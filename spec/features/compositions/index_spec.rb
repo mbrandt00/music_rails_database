@@ -18,7 +18,7 @@ RSpec.describe "Compositions Page", type: :feature do
     piece = adams.pieces.create!(opus: 10, composition_date: 2000, key_signature: 'C major', type_of_piece: 'Bagtelle', multiple_instruments: false, main_instrument: 'piano')
     visit "/composers/#{adams.id}/pieces"
     click_link "New Piece"
-    expect(current_path).to eq("/composers/#{adams.id}/pieces/new")
+    expect(current_path).to eq("/composers/#{adams.id}/index/new")
     fill_in 'opus', with: '85'
     fill_in 'composition_date', with: 2012
     fill_in 'key_signature', with: 'B-flat major'

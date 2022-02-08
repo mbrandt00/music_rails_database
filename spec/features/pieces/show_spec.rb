@@ -25,7 +25,7 @@ RSpec.describe "Pieces show page", type: :feature do
   describe 'deleting piece' do
     it 'will allow a piece to be deleted while keeping the composer' do
       piece_1 = chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: true, main_instrument: "piano", key_signature: "A-flat major")
-      piece_2 = chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: false, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')
+      piece_2 = chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: true, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')
       visit "/pieces/#{piece_1.id}"
       click_button "Delete Piece"
       expect(current_path).to eq('/pieces')

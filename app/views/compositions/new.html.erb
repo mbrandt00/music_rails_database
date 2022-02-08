@@ -1,0 +1,22 @@
+<h1>Create a new piece for <%= @composer.name%></h1>
+<%= form_with url: "/composers/#{@composer.id}/index/create", method: :post, local:true, id: 'form' do |form| %>
+<h4><%= form.label :opus %> </h4>
+  <p><%= form.number_field :opus %></p>
+<h4><%= form.label :number %> </h4>
+  <p><%= form.number_field :number %></p>
+  <h4><%= form.label :composition_date %> </h4>
+    <p><%= form.number_field :composition_date %></p>
+  <h4><%= form.label :type_of_piece %> </h4>
+    <p><%= form.text_field :type_of_piece %></p>
+  <h4><%= form.label :key_signature %></h4>
+    <p><%= form.text_field :key_signature %></p>
+  <h4><%= form.label :main_instrument %></h4>
+    <p><%= form.text_field :main_instrument %></p>
+  <h4><%= form.label :nickname %></h4>
+    <p><%= form.text_field :nickname %></p>
+  <h4><%= form.label :multiple_instruments %></h4>
+    <p><%= form.check_box :multiple_instruments %></p>
+
+
+  <%= form.submit 'Create Piece' %>
+<% end %>

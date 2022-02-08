@@ -1,6 +1,6 @@
 class PiecesController < ApplicationController
   def index
-    @pieces = Piece.ordered
+    @pieces = Piece.ordered.multiple_instruments
   end
 
   def show
@@ -8,7 +8,7 @@ class PiecesController < ApplicationController
   end
 
   def create
-    composer = Composer.find(params[:composer_id])
+    @composer = Composer.find(params[:composer_id])
     piece = composer.pieces.create(create_params)
     redirect_to "/composers/#{composer.id}/pieces"
   end

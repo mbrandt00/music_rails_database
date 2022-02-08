@@ -11,5 +11,5 @@
   <li> Tonal: <%= @composer.tonal ? 'Yes' : 'No' %></li>
 </ul>
 <p><%= link_to "Edit Composer", "#{@composer.id}/edit" %> </p>
-<p> <%= link_to "Composer's Pieces", "/composers/#{@composer.id}/pieces" %> </p>
+<p> <%= link_to "Composer's Pieces", "/composers/#{@composer.id}/index" %> </p>
 <p> <%= button_to 'Delete Composer', "/composers/#{@composer.id}", method: :delete %></p>

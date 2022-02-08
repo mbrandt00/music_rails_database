@@ -1,0 +1,28 @@
+
+<h1>Compositions by <%= "#{@composer.name}"%></h1>
+
+<%= form_tag("/composers/#{@composer.id}/index") do %>
+<p> Pieces: <%= select_tag("filter[pieces]", options_for_select(@composer.types_of_pieces, params[:filter_piece]), multiple: true) %> </p>
+<p><%= select_tag  "filter[first_year]", options_for_select((@composer.first_piece_year..@composer.last_piece_year),  params[:start]), include_blank: "Year of Earliest Composition" %> </p>
+<p><%= select_tag "filter[last_year]", options_for_select((@composer.first_piece_year..@composer.last_piece_year), params[:end]), include_blank: "Year of Last Composition " %> </p>
+
+<%= submit_tag "Filter" %>
+<% end %>
+
+<%@compositions.each do  |piece| %>
+<h3><%= link_to "Edit Piece", "/pieces/#{piece.id}/edit" %></h3>
+  <ul>
+    <li> Opus <%= piece.opus %>
+           <%= "No. #{piece.number}" if piece.number.nil? == false%> </li>
+    <li> Date of Composition: <%= piece.composition_date %> </li>
+    <li> Key Signature: <%= piece.key_signature %> </li>
+    <li> <%= piece.piano%> </li>
+      <% if piece.nickname %>
+    <li> Nickname: <%= piece.nickname %> </li>
+         <% end %>
+  </ul>
+<% end %>
+<%= link_to 'New Piece', "/composers/#{@composer.id}/index/new" %>
+<h3>  Sort Pieces by: </h3>
+<p> <%= link_to "Opus and Number", request.params.merge(:sort => ["opus", "number"]) %> </p>
+<p> <%= link_to "Date", request.params.merge(:sort => "composition_date") %> </p>

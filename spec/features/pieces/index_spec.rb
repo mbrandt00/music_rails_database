@@ -38,4 +38,14 @@ RSpec.describe "Pieces index page", type: :feature do
     expect(current_path).to eq("/pieces/#{piece_1.id}")
     expect(page).to have_content('3')
   end
+
+  it 'can delete pieces from index page' do #22
+    piece_1 = chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: true, main_instrument: "piano", key_signature: "A-flat major")
+    piece_2 = chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: true, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')
+    piece_3 = tchaikovsky.pieces.create!(opus: 49, number: nil, type_of_piece: "Overture", composition_date: 1880, multiple_instruments: true, main_instrument: "cannons", key_signature: "E-flat major", nickname: '1812 Overture')
+    visit "/pieces"
+    first(".delete").click
+    expect(page).to have_content(piece_2.opus)
+    expect(page).to have_content(piece_3.opus)
+  end
 end

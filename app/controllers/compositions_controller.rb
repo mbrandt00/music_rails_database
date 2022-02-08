@@ -1,6 +1,5 @@
 class CompositionsController < ApplicationController
   def index
-
     @composer = Composer.find(params[:composer_id])
     @compositions = Piece.filter_compositions(params)
   end
@@ -13,6 +12,11 @@ class CompositionsController < ApplicationController
     composer = Composer.find(params[:id])
     piece = composer.pieces.create(create_params)
     redirect_to "/composers/#{composer.id}/index"
+  end
+
+  def destroy
+    Piece.destroy(params[:id])
+    redirect_to "/composers/#{params[:composer_id]}/show"
   end
 
   private

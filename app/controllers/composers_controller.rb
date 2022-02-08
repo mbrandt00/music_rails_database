@@ -12,10 +12,6 @@ class ComposersController < ApplicationController
     redirect_to '/composers'
   end
 
-  def create_composer_piece
-    @composer = Composer.find(params[:id])
-  end
-
   def edit
     @composer = Composer.find(params[:id])
   end
@@ -38,7 +34,5 @@ class ComposersController < ApplicationController
     params.permit(:name, :birth_year, :death_year, :musical_era, :ethnicity,
     :num_compositions)
   end
-  def sanitize(search)
-    search.to_i.to_s
-  end
+
 end

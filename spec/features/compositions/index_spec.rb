@@ -28,7 +28,7 @@ RSpec.describe "Compositions Page", type: :feature do
     expect(current_path).to eq("/composers/#{adams.id}/index")
     expect(page).to have_content('B-flat major')
   end
-  it 'has a link to edit each piece' do
+  it 'has a link to edit each piece' do #17
     piece = adams.pieces.create!(opus: 10, composition_date: 2000, key_signature: 'C major', type_of_piece: 'Bagtelle', multiple_instruments: false, main_instrument: 'piano', )
     visit "/composers/#{adams.id}/index"
     click_link "Edit Piece"
@@ -36,7 +36,7 @@ RSpec.describe "Compositions Page", type: :feature do
     click_on 'Save Changes'
 
   end
-  describe 'When i visit composer composition page I see to filter' do
+  describe 'When i visit composer composition page I see to filter' do #16 #21
     it 'will sort pieces by date and piece type' do
       piece_1 = chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: false, main_instrument: "piano", key_signature: "A-flat major")
       piece_2 = chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: false, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')
@@ -49,10 +49,17 @@ RSpec.describe "Compositions Page", type: :feature do
       select "1835", from: 'filter_first_year'
       select "1840", from: 'filter_last_year'
       click_button "Filter"
-      save_and_open_page
       expect(current_path).to eq("/composers/#{chopin.id}/index")
       expect(page).to have_content(piece_6.number)
       expect(page).to_not have_content(piece_4.nickname)
     end
+  end
+  it 'can delete pieces from the the composers pieces index page' do #23
+    piece_1 = chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: false, main_instrument: "piano", key_signature: "A-flat major")
+    piece_2 = chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: false, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')
+    visit "/composers/#{chopin.id}/index"
+    first('.delete').click
+    visit "/composers/#{chopin.id}/index"
+    expect(page).to have_content(piece_2.opus)
   end
 end

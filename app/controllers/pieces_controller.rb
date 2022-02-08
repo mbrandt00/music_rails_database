@@ -7,11 +7,6 @@ class PiecesController < ApplicationController
     @piece = Piece.find(params[:id])
   end
 
-  def create
-    @composer = Composer.find(params[:composer_id])
-    piece = composer.pieces.create(create_params)
-    redirect_to "/composers/#{composer.id}/pieces"
-  end
 
   def edit
     @piece = Piece.find(params[:id])
@@ -32,10 +27,6 @@ class PiecesController < ApplicationController
 
   def piece_params
       params.permit(piece: [:opus, :number, :type_of_piece, :nickname, :composition_date, :multiple_instruments, :main_instrument, :key_signature])
-    end
-
-    def create_params
-      params.permit(:opus, :number, :type_of_piece, :nickname, :composition_date, :multiple_instruments, :main_instrument, :key_signature)
     end
 
 end

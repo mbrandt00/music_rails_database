@@ -1,6 +1,6 @@
 <h1>Learned Pieces</h1>
-
-<% @pieces.each do |piece| %>
+<h2>There are <%= @pieces.count %> pieces with multiple instruments in the database. </h2>
+<% @compositions do |piece| %>
   <h2>
 
     <a href="/pieces/<%= piece.id %>">

@@ -11,7 +11,7 @@ RSpec.describe "Pieces show page", type: :feature do
     expect(page).to have_content(piece_1.key_signature)
   end
   describe 'Editing piece' do
-    it 'will allow for pieces to be edited' do
+    it 'will allow for pieces to be edited' do #14
     piece_1 = chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: false, main_instrument: "piano", key_signature: "A-flat major")
     visit "pieces/#{piece_1.id}"
     click_link "Edit Piece"

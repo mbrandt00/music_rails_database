@@ -1,6 +1,6 @@
 class PiecesController < ApplicationController
   def index
-    @pieces = Piece.ordered
+    @pieces = Piece.ordered.multiple_instruments
   end
 
   def show

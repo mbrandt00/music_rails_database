@@ -14,7 +14,7 @@ RSpec.describe "Compositions Page", type: :feature do
     expect(page).to have_content(piece_3.opus)
     expect(page).to_not have_content(piece_4.opus)
   end
-  it 'will allow new pieces to be created' do
+  it 'will allow new pieces to be created' do #13
     piece = adams.pieces.create!(opus: 10, composition_date: 2000, key_signature: 'C major', type_of_piece: 'Bagtelle', multiple_instruments: false, main_instrument: 'piano')
     visit "/composers/#{adams.id}/pieces"
     click_link "New Piece"
@@ -37,7 +37,7 @@ RSpec.describe "Compositions Page", type: :feature do
 
   end
   describe 'When i visit composer composition page I see form for numeric input' do
-    it 'will allow for only pieces to be returned that match a condition' do
+    it 'will sort pieces by date' do
       chopin.pieces.create!(opus: 47, number: nil, type_of_piece: "Ballad", composition_date: 1841, multiple_instruments: false, main_instrument: "piano", key_signature: "A-flat major")
       chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: false, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')
       chopin.pieces.create!(opus: 21, number: nil, type_of_piece: "Concerto", composition_date: 1830, multiple_instruments: true, main_instrument: "piano", key_signature: "F minor")
@@ -45,6 +45,7 @@ RSpec.describe "Compositions Page", type: :feature do
       chopin.pieces.create!(opus: 10, number: 8, type_of_piece: "Etude", composition_date: 1833, multiple_instruments: false, main_instrument: "piano", key_signature: "F major")
       chopin.pieces.create!(opus: 10, number: 12, type_of_piece: "Etude", composition_date: 1833, multiple_instruments: false, main_instrument: "piano", key_signature: "C minor", nickname:'Revolutionary')
       visit "/composers/#{chopin.id}/pieces"
+      click_button
     end
   end
 end

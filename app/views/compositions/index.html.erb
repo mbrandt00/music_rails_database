@@ -21,6 +21,8 @@
     <li> Nickname: <%= piece.nickname %> </li>
          <% end %>
   </ul>
+  <p, class = 'delete'> <%= button_to 'Delete Piece', "/composers/#{@composer.id}/index/#{piece.id}", method: :delete %> </p>
+
 <% end %>
 <%= link_to 'New Piece', "/composers/#{@composer.id}/index/new" %>
 <h3>  Sort Pieces by: </h3>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/composers/:composer_id/index', to: 'compositions#index'
   post '/composers/:composer_id/index', to: 'compositions#index'
   get '/composers/:id/index/new', to: 'compositions#new'
+  delete '/composers/:composerid/index/:id', to: 'compositions#destroy'
   post '/composers/:id/index/create', to: 'compositions#create'
   post '/composers/:id/', to: 'pieces#create'
   post '/composers', to: 'composers#create'

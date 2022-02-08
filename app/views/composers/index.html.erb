@@ -4,6 +4,8 @@
   <h4 class = 'edit'><%= link_to 'Edit Composer', "/composers/#{composer.id}/edit" %> </h4>
   <p><%= composer.created_at.in_time_zone('MST').strftime("Created on %m/%d/%Y at %I:%M %p")   %> </p>
   <p><%= composer.updated_at.in_time_zone('MST').strftime("Updated on %m/%d/%Y at %I:%M %p")   %> </p>
+  <p, class = 'delete'> <%= button_to 'Delete Composer', "/composers/#{composer.id}", method: :delete %></p>
+
   <% end %>
 
 <%= link_to 'New Composer', '/composers/new' %>

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Index page' do
   let!(:chopin) {Composer.create!(name: "Frédéric François Chopin", birth_year: 1810, death_year: 1849, musical_era: "Romantic", num_compositions: 210, tonal: true, ethnicity: 'Polish')}
-  let!(:adams) {Composer.create!(name: 'John Adams', birth_year: 1947, musical_era: "Modern", num_compositions: 80, tonal: false, ethnicity: 'American')}
 
   describe 'As a visitor' do
     it 'will show all the composers on the page' do #1
@@ -28,8 +27,10 @@ RSpec.describe 'Index page' do
       expect(current_path).to eq('/composers')
       expect(page).to have_content('Michael Brandt')
     end
-    describe 'When I visit the composer index page, next to each composer is a link to edit parents info. When I click the link, I can edit the info' do
+    describe 'When I visit the composer index page, next to each composer is a link to edit parents info. When I click the link, I can edit the info' do #18
       it 'can edit a composer with a button click' do
+        adams = Composer.create!(name: 'John Adams', birth_year: 1947, musical_era: "Modern", num_compositions: 80, tonal: false, ethnicity: 'American')
+
         visit '/composers/'
         first('.edit > a').click
         expect(current_path).to eq("/composers/#{adams.id}/edit")
@@ -39,5 +40,10 @@ RSpec.describe 'Index page' do
         expect(page).to have_content('85')
       end
     end
+  end
+  it 'can delete the composer and returned to index page' do #22
+    visit '/composers/'
+    click_button("Delete Composer")
+    expect(page).to_not have_content(chopin.name)
   end
 end

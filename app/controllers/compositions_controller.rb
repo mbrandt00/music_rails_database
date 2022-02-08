@@ -15,8 +15,9 @@ class CompositionsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     Piece.destroy(params[:id])
-    redirect_to "/composers/#{params[:composer_id]}/show"
+    redirect_to "/composers/#{params[:composerid]}"
   end
 
   private

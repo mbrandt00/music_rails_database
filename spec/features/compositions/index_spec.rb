@@ -59,7 +59,8 @@ RSpec.describe "Compositions Page", type: :feature do
     piece_2 = chopin.pieces.create!(opus: 35, number: nil, type_of_piece: "Sonata", composition_date: 1840, multiple_instruments: false, main_instrument: "piano", key_signature: "B-flat minor", nickname: 'Funeral March')
     visit "/composers/#{chopin.id}/index"
     first('.delete').click
-    visit "/composers/#{chopin.id}/index"
+    expect(current_path).to eq("/composers/#{chopin.id}/index")
+    save_and_open_page
     expect(page).to have_content(piece_2.opus)
   end
 end

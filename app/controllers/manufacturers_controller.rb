@@ -11,7 +11,14 @@ class ManufacturersController < ApplicationController
     @manufacturer = Manufacturer.find(params[:id])
   end
 
-  def method_name
-
+  def create
+    Manufacturer.create(manufacturer_params)
+    redirect_to '/manufacturers'
   end
+
+  private
+  def manufacturer_params
+    params.permit(:maker, :location, :year_opened, :family_owned, :ceo)
+  end
+
 end

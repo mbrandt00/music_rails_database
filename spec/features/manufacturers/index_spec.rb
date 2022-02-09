@@ -23,12 +23,27 @@ require 'rails_helper'
 
    it "can display records by most recent ordering" do
      # Manufacturer.create!(maker: "Steinway & Sons", location: "Manhattan, USA", year_opened: "1853", family_owned: true, ceo: "Ron Losby")
-     michael_brandt = Manufacturer.create!(maker: "Fuck You", location: "Stockholm, Sweden", year_opened: "1853", family_owned: true, ceo: "Stefan Freymuth")
+     michael_brandt = Manufacturer.create!(maker: "Cool Piano", location: "Denver, CO", year_opened: "2000", family_owned: true, ceo: "Michael Brandt")
      visit "/manufacturers"
      # save_and_open_page
      expect(current_path).to eq('/manufacturers')
      expect(michael_brandt.location).to appear_before(steinway.location)
    end
+
+   it "can display a link to create a new manufacturer" do # User story 11
+     visit '/manufacturers'
+     save_and_open_page
+     click_link 'New Manufacturer'
+     fill_in 'maker', with: "Dani Coleman"
+     fill_in 'location', with: "Colorado, USA"
+     fill_in 'year_opened', with: 1980
+     # fill_in 'family_owned', with: "Dani Coleman"
+     fill_in 'ceo', with: "Dani Coleman"
+     click_button 'Create Manufacturer'
+     expect(current_path).to eq('/manufacturers')
+     expect(page).to have_content('Dani Coleman')
+   end
+
 
 
 

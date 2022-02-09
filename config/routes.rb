@@ -25,9 +25,12 @@ Rails.application.routes.draw do
   get '/pianos/:id', to: 'pianos#show'
 
   get '/manufacturers', to: 'manufacturers#index'
+  get '/manufacturers/new', to: 'manufacturers#new'
+  post '/manufacturers', to: 'manufacturers#create'
   get '/manufacturers/:id', to: 'manufacturers#show'
   get '/manufacturers/:id', to: 'manufacturers#index'
   get '/manufacturers/:id/pianos', to: 'manufacturers#show'
+
 
 end
 

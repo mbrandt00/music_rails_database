@@ -16,6 +16,17 @@ class ManufacturersController < ApplicationController
     redirect_to '/manufacturers'
   end
 
+  def edit
+    @manufacturer = Manufacturer.find(params[:id])
+  end
+
+  def update
+    manufacturer = Manufacturer.find(params[:id])
+    manufacturer.update(manufacturer_params)
+    manufacturer.save
+    redirect_to "/manufacturers/#{manufacturer.id}"
+  end
+
   private
   def manufacturer_params
     params.permit(:maker, :location, :year_opened, :family_owned, :ceo)

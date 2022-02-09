@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   get '/manufacturers/:id', to: 'manufacturers#show'
   get '/manufacturers/:id', to: 'manufacturers#index'
   get '/manufacturers/:id/pianos', to: 'manufacturers#show'
+  get '/manufacturers/:id/edit', to: 'manufacturers#edit'
+  patch '/manufacturers/:id/edit', to: 'manufacturers#update'
+
+
 
 
 end

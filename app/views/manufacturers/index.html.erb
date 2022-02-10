@@ -5,6 +5,9 @@
   <p><%= manufacturer.created_at.in_time_zone('MST').strftime("Created on %m/%d/%Y at %I:%M %p")%></p>
   <p><%= manufacturer.location%></p>
   <p><%= manufacturer.updated_at.in_time_zone('MST').strftime("Updated on %m/%d/%Y at %I:%M %p")%></p>
+  <p><%= link_to "Edit Manufacturer", "/manufacturers/#{manufacturer.id}/edit" %> </p>
+  <p><%= link_to "Delete Manufacturer", "/manufacturers/#{manufacturer.id}/delete", method: :delete %></p>
+
   <% end %>
 
 <%= link_to 'New Manufacturer', '/manufacturers/new' %>

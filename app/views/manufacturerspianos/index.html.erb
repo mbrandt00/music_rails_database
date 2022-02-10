@@ -1,6 +1,14 @@
-<h1>Piano Models</h1>
+<h1>Manufacturers Pianos</h1>
 
-<% @pianos.each do |piano| %>
+<%= form_tag("/manufacturerspianos/#{@manufacturers.id}/index") do %>
+<p> Price: <%= number_field_tag :prices, params[:filter], method: :post %> </p>
+
+<%= submit_tag :prices %>
+<% end %>
+
+
+
+<% @manufacturerspianos.each do |piano| %>
   <h2>
 
     <a href="/pianos/<%= piano.id %>">
@@ -17,3 +25,6 @@
   </p>
   <p, class = 'delete'><%= button_to 'Delete Piano', "/pianos/#{piano.id}", method: :delete %> </p>
 <% end %>
+
+<p><%= link_to "Create Piano", "/manufacturerspianos/#{@manufacturers.id}/new" %></p>
+<p> <%= link_to "Sort by price", request.params.merge(:sort => "price") %> </p>

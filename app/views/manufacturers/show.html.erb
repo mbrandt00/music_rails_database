@@ -1,11 +1,17 @@
 <h1><%= @manufacturer.maker %></h1>
 <h3>This Manufacturer Has <%= @manufacturer.pianos.count %> Pianos</h3>
-<% @manufacturer.pianos.each do |piano| %>
-  <h4><%= piano.model%></h4>
-  <p>Piano style: <%= piano.style %></p>
-  <p>Price: <%= piano.price %></p>
-  <p>Color: <%= piano.color %></p>
-  <p>Acoustic: <%= piano.acoustic %></p>
-  <p>Created at: <%= piano.created_at %></p>
-  <p>Updated at: <%= piano.updated_at %></p>
-<% end %>
+  <ul>
+    <li>Maker: <%= @manufacturer.maker%></li>
+    <li>Location: <%= @manufacturer.location%></li>
+    <li>Year Opened: <%= @manufacturer.year_opened%></li>
+    <li>Family Owned? <%= @manufacturer.family_owned%></li>
+    <li>CEO Name: <%= @manufacturer.ceo%></li>
+  </ul>
+
+
+
+
+<p><%= link_to "Update Manufacturer"%></p>
+<p><%= link_to "Edit Manufacturer", "#{@manufacturer.id}/edit" %> </p>
+<p> <%= link_to "Manufacturer Piano Models", "/manufacturerspianos/#{@manufacturer.id}/index" %> </p>
+<p><%= link_to "Delete Manufacturer", "/manufacturers/#{@manufacturer.id}/delete", method: :delete %></p>

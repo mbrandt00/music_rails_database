@@ -1,0 +1,16 @@
+<h1>Edit <%="#{@manufacturer.maker}" %></h1>
+
+<%= form_with  method: :patch, local:true, id: 'form' do |form| %>
+<h4><%= form.label :maker %> </h4>
+  <p><%= form.text_field :maker, value:@manufacturer.maker %></p>
+<h4><%= form.label :location %> </h4>
+  <p><%= form.text_field :location, value:@manufacturer.location %></p>
+<h4><%= form.label :year_opened %></h4>
+  <p><%= form.number_field :year_opened, value:@manufacturer.year_opened %></p>
+<h4><%= form.label :family_owned %></h4>
+  <p><%= form.check_box :family_owned, value:@manufacturer.family_owned %></p>
+<h4><%= form.label :ceo %></h4>
+  <p><%= form.text_field :ceo, value:@manufacturer.ceo %></p>
+
+<%= form.submit 'Save Changes' %>
+<% end %>

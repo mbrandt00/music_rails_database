@@ -28,7 +28,7 @@ RSpec.describe 'Show page' do
       visit "composers/#{chopin.id}"
       expect(page).to have_content("3 pieces by this composer in the database")
     end
-    it 'will have a link that will delete the composer' do #19 
+    it 'will have a link that will delete the composer' do #19
       piece = adams.pieces.create!(opus: 10, composition_date: 2000, key_signature: 'C major', type_of_piece: 'Bagtelle', multiple_instruments: false, main_instrument: 'piano', )
       visit "composers/#{adams.id}"
       click_button "Delete Composer"

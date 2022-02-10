@@ -32,6 +32,16 @@ require 'rails_helper'
      expect(page).to have_content("This Manufacturer Has 4 Pianos")
    end
 
-
+   it 'can update a manufacturers attributes' do # User story 12
+     visit "/manufacturers/#{yamaha.id}"
+     click_link "Edit Manufacturer"
+     expect(current_path).to eq("/manufacturers/#{yamaha.id}/edit")
+     fill_in 'maker', with: "Mike Dao"
+     fill_in 'location', with: "Colorado, USA"
+     fill_in 'year_opened', with: 1980
+     click_on 'Save Changes'
+     expect(current_path).to eq("/manufacturers/#{yamaha.id}")
+     expect(page).to have_content('Mike Dao')
+   end
 
  end

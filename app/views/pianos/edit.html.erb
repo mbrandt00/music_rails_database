@@ -1,0 +1,19 @@
+<h1>
+  Edit Piano <%= @piano.model %>
+</h1>
+
+<%= form_with method: :patch, local:true, id: 'form' do |form| %>
+  <h4><%=form.label :model %> </h4>
+    <p><%= text_field(:piano, :model, id: :model) %></p>
+  <h4><%=form.label :style %> </h4>
+    <p><%= text_field(:piano, :style, id: :style) %></p>
+  <h4><%=form.label :price %> </h4>
+    <p><%= number_field(:piano, :price, id: :price) %></p>
+  <h4><%=form.label :color, id: :color %> </h4>
+    <p><%= text_field(:piano, :color) %></p>
+  <h4><%=form.label :acoustic? %> </h4>
+    <p><%= check_box(:piano, :acoustic, id: :acoustic) %></p>
+
+<%= form.submit 'Save Changes' %>
+
+<% end %>

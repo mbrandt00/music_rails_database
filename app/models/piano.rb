@@ -1,3 +1,8 @@
 class Piano < ApplicationRecord
   belongs_to :manufacturer
-end 
+
+  def self.acoustic
+    where("acoustic = true")
+  end
+
+end

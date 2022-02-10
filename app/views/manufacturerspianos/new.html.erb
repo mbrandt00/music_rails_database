@@ -1,0 +1,15 @@
+<h1>Create a new piano for <%= @manufacturer.maker%></h1>
+<%= form_with url: "/manufacturerspianos/#{@manufacturer.id}/index/new", method: :post, local:true, id: 'form' do |form| %>
+<h4><%= form.label :model %> </h4>
+  <p><%= form.text_field :model %></p>
+<h4><%= form.label :style %> </h4>
+  <p><%= form.text_field :style %></p>
+  <h4><%= form.label :price %> </h4>
+    <p><%= form.number_field :price %></p>
+  <h4><%= form.label :color %> </h4>
+    <p><%= form.text_field :color %></p>
+  <h4><%= form.label :acoustic %></h4>
+    <p><%= form.check_box :acoustic %></p>
+
+  <%= form.submit 'Create Piano' %>
+<% end %>

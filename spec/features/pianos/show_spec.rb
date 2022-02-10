@@ -25,4 +25,18 @@ require 'rails_helper'
      expect(page).to have_content(piano_10.acoustic)
    end
 
+   it "can display a link to edit pianos" do
+     steinway = Manufacturer.create!(maker: "Steinway & Sons", location: "Manhattan, USA", year_opened: "1853", family_owned: true, ceo: "Ron Losby")
+
+     piano_1 = steinway.pianos.create!(model: "Model D", style: "Concert Grand", price: 150000, color: "black", acoustic: true) #length: "8ft 11in")
+     visit "pianos/#{piano_1.id}"
+     click_link 'Edit Piano'
+     expect(current_path).to eq("/pianos/#{piano_1.id}/edit")
+     fill_in('model', with: 'Model M')
+     click_on 'Save Changes'
+     expect(current_path).to eq("/pianos/#{piano_1.id}")
+     expect(page).to have_content('2')
+
+   end
+
  end

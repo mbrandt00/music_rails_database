@@ -27,6 +27,11 @@ class ManufacturersController < ApplicationController
     redirect_to "/manufacturers/#{manufacturer.id}"
   end
 
+  def destroy
+    Manufacturer.destroy(params[:id])
+    redirect_to '/manufacturers'
+  end
+
   private
   def manufacturer_params
     params.permit(:maker, :location, :year_opened, :family_owned, :ceo)
